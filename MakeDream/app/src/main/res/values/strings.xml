@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MakeDream</string>
+    <string name="home">首页</string>
+    <string name="mall">商城</string>
+    <string name="like">关注</string>
+    <string name="message">消息</string>
+    <string name="person">我的</string>
+    <string name="kao_yan">考研</string>
+    <string name="kao_zheng">考证</string>
+    <string name="chu_guo">出国</string>
+    <string name="qi_ye">企业纳英</string>
+    <string name="jian_zhi">课外兼职</string>
+    <string name="jiao_you">实名交友</string>
+    <string name="shi_xi">实习招聘</string>
+    <string name="guang_chang">校园广场</string>
+    <string name="user_name">用户名</string>
+</resources>

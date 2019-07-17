@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    //蓝色学校广告区
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="10dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blue"
+            android:orientation="horizontal"></android.support.v4.view.ViewPager>
+
+        //圆点指示器
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="8dp"
+           android:layout_gravity="bottom">
+
+           <ImageView
+               android:id="@+id/circle_1"
+               android:layout_width="10dp"
+               android:layout_height="10dp"
+               android:alpha="0.7"
+               android:layout_toLeftOf="@id/circle_2"
+               android:src="@drawable/circle_true" />
+
+           <ImageView
+               android:id="@+id/circle_2"
+               android:layout_width="10dp"
+               android:layout_height="10dp"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+               android:alpha="0.7"
+               android:layout_centerHorizontal="true"
+               android:src="@drawable/circle_false" />
+
+           <ImageView
+               android:id="@+id/circle_3"
+               android:layout_width="10dp"
+               android:layout_height="10dp"
+               android:alpha="0.7"
+               android:layout_toRightOf="@id/circle_2"
+               android:src="@drawable/circle_false" />
+       </RelativeLayout>
+    </FrameLayout>
+
+    //首页分类
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        //分类第一行
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btn_kao_zheng"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kao_zheng"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/kao_zheng"/>
+
+            <Button
+                android:id="@+id/btn_kao_yan"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kao_yan"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/kao_yan"/>
+
+            <Button
+                android:id="@+id/btn_chu_guo"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chu_guo"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/chu_guo"/>
+
+            <Button
+                android:id="@+id/btn_qi_ye"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/qi_ye"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/qi_ye"/>
+
+        </LinearLayout>
+
+
+        //分类第二行
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            >
+
+            <Button
+                android:id="@+id/btn_jian_zhi"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jian_zhi"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/jian_zhi"/>
+
+            <Button
+                android:id="@+id/btn_jiao_you"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jiao_you"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/jiao_you"/>
+
+            <Button
+                android:id="@+id/btn_shi_xi"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shi_xi"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/shi_xi"/>
+
+            <Button
+                android:id="@+id/btn_guang_chang"
+                android:layout_marginRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guang_chang"
+                android:textColor="@color/black"
+                android:background="#00000000"
+                android:drawableTop="@drawable/guang_chang"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/blue"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_page_notice"
+            android:layout_width="match_parent"
+            android:layout_height="170dp">
+
+        </android.support.v4.view.ViewPager>
+
+    </FrameLayout>
+
+</LinearLayout>
