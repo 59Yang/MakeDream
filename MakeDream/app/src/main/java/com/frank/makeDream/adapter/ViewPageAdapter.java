@@ -1,5 +1,6 @@
 package com.frank.makeDream.adapter;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,18 @@ public class ViewPageAdapter extends PagerAdapter {
     //数据
     private ArrayList<View> viewLists;
 
+    //上下文
+    private Context context;
+
 
     /**
      * 构造函数
      * 初始化上下文和数据
      * @param viewLists
      */
-    public ViewPageAdapter(ArrayList<View> viewLists) {
+    public ViewPageAdapter(ArrayList<View> viewLists,Context context) {
         this.viewLists = viewLists;
+        this.context = context;
     }
 
     /**
@@ -28,7 +33,7 @@ public class ViewPageAdapter extends PagerAdapter {
      */
     @Override
     public int getCount() {
-        return viewLists.size();
+        return Integer.MAX_VALUE;
     }
 
     /**
@@ -52,8 +57,8 @@ public class ViewPageAdapter extends PagerAdapter {
      */
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(viewLists.get(position));
-        return viewLists.get(position);
+        container.addView(viewLists.get(position % viewLists.size()));
+        return viewLists.get(position % viewLists.size());
     }
 
 
@@ -65,6 +70,7 @@ public class ViewPageAdapter extends PagerAdapter {
      */
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(viewLists.get(position));
+        container.removeView((View) object);
+        object = null;
     }
 }

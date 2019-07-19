@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity{
 
     //初始化控件
     private void initView(){
+        final TopBar topBar = findViewById(R.id.topBar);
         //初始化底部菜单栏控件
         bottomNavigationView = findViewById(R.id.bnv_menu);
         //设置删除默认动画效果（显示图标下的文字）
@@ -48,18 +49,23 @@ public class MainActivity extends AppCompatActivity{
                 switch (menuItem.getItemId()) {
                     case R.id.item_home_page:
                         replaceFragment(new Fragment_home_page());
+                        topBar.setTitle("首页");
                         break;
                     case R.id.item_mall:
                         replaceFragment(new Fragment_fen_lei());
+                        topBar.setTitle("商城");
                         break;
                     case R.id.item_like:
                         replaceFragment(new Fragment_fen_lei());
+                        topBar.setTitle("关注");
                         break;
                     case R.id.item_msg:
                         replaceFragment(new Fragment_fen_lei());
+                        topBar.setTitle("消息");
                         break;
                     case R.id.item_person:
                         replaceFragment(new Fragment_personal());
+                        topBar.setTitle("我的");
                         break;
                     default:
                         break;
@@ -68,6 +74,17 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        topBar.setOnTopbarClickListener(new TopBar.topBarClickListener() {
+            @Override
+            public void leftClick() {
+                Toast.makeText(MainActivity.this,"返回",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void rightClick() {
+                Toast.makeText(MainActivity.this,"更多",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

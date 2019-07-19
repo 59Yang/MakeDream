@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class Fragment_personal extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     private View view;
-    private ImageView setting;
+    //private ImageView setting;
     private RelativeLayout Li_sh;
     private LinearLayout Li_shipin,Li_huodong,Li_dizhi,Li_shouhou,Li_jifen,Li_ed,Li_kefu,Li_fankui;
 
@@ -28,7 +28,7 @@ public class Fragment_personal extends android.support.v4.app.Fragment implement
     }
 
     private void initView() {
-        setting=view.findViewById(R.id.setting);
+        //setting=view.findViewById(R.id.setting);
         Li_sh=view.findViewById(R.id.Li_sh);
         Li_shipin=view.findViewById(R.id.Li_sihpin);
         Li_huodong=view.findViewById(R.id.Li_houdong);
@@ -38,7 +38,7 @@ public class Fragment_personal extends android.support.v4.app.Fragment implement
         Li_ed=view.findViewById(R.id.Li_ed);
         Li_kefu=view.findViewById(R.id.Li_kefu);
         Li_fankui=view.findViewById(R.id.Li_fankui);
-        setting.setOnClickListener(this);
+        //setting.setOnClickListener(this);
         Li_sh.setOnClickListener(this);
         Li_shipin.setOnClickListener(this);
         Li_huodong.setOnClickListener(this);
@@ -54,9 +54,6 @@ public class Fragment_personal extends android.support.v4.app.Fragment implement
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.setting:
-                Toast.makeText(getActivity(),"设置",Toast.LENGTH_SHORT).show();
-                break;
             case  R.id.Li_sh:
                 Toast.makeText(getActivity(),"学校认证",Toast.LENGTH_SHORT).show();
                 break;

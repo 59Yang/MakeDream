@@ -1,6 +1,8 @@
 package com.frank.makeDream;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -37,12 +39,28 @@ public class Fragment_home_page extends android.support.v4.app.Fragment implemen
     private ViewPager pager_notice;
     private ViewPageAdapter viewPageAdapter;
 
+    private int lastPointPosition = 0;
+    private boolean isRunning = false;
+
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            pager_home.setCurrentItem(pager_home.getCurrentItem() + 1);
+            if(isRunning){
+                handler.sendEmptyMessageDelayed(0,4000);
+            }
+        }
+    };
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.view_home_page,container,false);
         initView();
         initAdapeter_school();
         initAdapeter_notice();
+        isRunning = true;
+        handler.sendEmptyMessageDelayed(0,4000);
         return view;
 
     }
@@ -116,24 +134,9 @@ public class Fragment_home_page extends android.support.v4.app.Fragment implemen
             }
 
             @Override
-            public void onPageSelected(int i) {
-                switch (i){
-                    case 0:
-                        circle_1.setImageDrawable(getResources().getDrawable(R.drawable.circle_true));
-                        circle_2.setImageDrawable(getResources().getDrawable(R.drawable.circle_false));
-                        circle_3.setImageDrawable(getResources().getDrawable(R.drawable.circle_false));
-                        break;
-                    case 1:
-                        circle_1.setImageDrawable(getResources().getDrawable(R.drawable.circle_false));
-                        circle_2.setImageDrawable(getResources().getDrawable(R.drawable.circle_true));
-                        circle_3.setImageDrawable(getResources().getDrawable(R.drawable.circle_false));
-                        break;
-                    case 2:
-                        circle_1.setImageDrawable(getResources().getDrawable(R.drawable.circle_false));
-                        circle_2.setImageDrawable(getResources().getDrawable(R.drawable.circle_false));
-                        circle_3.setImageDrawable(getResources().getDrawable(R.drawable.circle_true));
-                        break;
-                }
+            public void onPageSelected(int position) {
+                position = position % alist.size();
+                lastPointPosition = position;
             }
 
             @Override
@@ -187,8 +190,9 @@ public class Fragment_home_page extends android.support.v4.app.Fragment implemen
         alist.add(layoutInflater.inflate(R.layout.view_one,null,false));
         alist.add(layoutInflater.inflate(R.layout.view_two,null,false));
         alist.add(layoutInflater.inflate(R.layout.view_three,null,false));
-        viewPageAdapter = new ViewPageAdapter(alist);
+        viewPageAdapter = new ViewPageAdapter(alist,getActivity());
         pager_home.setAdapter(viewPageAdapter);
+        pager_home.setCurrentItem(Integer.MAX_VALUE/2 - ((Integer.MAX_VALUE /2) % alist.size()));
     }
 
     /**
@@ -200,7 +204,13 @@ public class Fragment_home_page extends android.support.v4.app.Fragment implemen
         alist.add(layoutInflater.inflate(R.layout.notice_view_page_1,null));
         alist.add(layoutInflater.inflate(R.layout.notice_view_page_2,null));
         alist.add(layoutInflater.inflate(R.layout.notice_view_page_3,null));
-        viewPageAdapter = new ViewPageAdapter(alist);
+        viewPageAdapter = new ViewPageAdapter(alist,getActivity());
         pager_notice.setAdapter(viewPageAdapter);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isRunning = false;
     }
 }

@@ -5,6 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/blue"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <com.frank.makeDream.TopBar
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            custom:leftBackground="@drawable/bcak"
+            custom:leftTextColor="@color/white"
+            custom:rightBackground="@drawable/more"
+            custom:rightTextColor="@color/white"
+            custom:titleTextColor="@color/white"
+            custom:title="@string/home"
+            custom:titleTextSize="5sp"
+            >
+        </com.frank.makeDream.TopBar>
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

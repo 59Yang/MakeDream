@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -31,6 +32,17 @@ public class TopBar extends RelativeLayout {
     private String title;
 
     private LayoutParams leftParams,rightParams,titleParams;
+
+    private topBarClickListener listener;
+
+    public interface topBarClickListener{
+        public void leftClick();
+        public void rightClick();
+    }
+
+    public void setOnTopbarClickListener(topBarClickListener listener){
+        this.listener = listener;
+    }
 
     public TopBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -68,20 +80,45 @@ public class TopBar extends RelativeLayout {
         tv_title.setText(title);
         tv_title.setGravity(Gravity.CENTER);
 
-        leftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        leftParams = new LayoutParams(60,60);
         leftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT,TRUE);
+        leftParams.addRule(RelativeLayout.CENTER_VERTICAL,TRUE);
         addView(leftButton,leftParams);
 
-        rightParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        rightParams = new LayoutParams(50,50);
         rightParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,TRUE);
+        rightParams.addRule(RelativeLayout.CENTER_VERTICAL,TRUE);
         addView(rightButton,rightParams);
 
         titleParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
         titleParams.addRule(RelativeLayout.CENTER_IN_PARENT,TRUE);
         addView(tv_title,titleParams);
 
+        leftButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.leftClick();
+            }
+        });
+
+        rightButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.rightClick();
+            }
+        });
 
     }
 
+    public void setLeftIsvisible(boolean flag){
+        if(flag){
+            leftButton.setVisibility(View.VISIBLE);
+        }else {
+            leftButton.setVisibility(View.GONE);
+        }
+    }
 
+    public void setTitle(String title){
+        tv_title.setText(title);
+    }
 }
